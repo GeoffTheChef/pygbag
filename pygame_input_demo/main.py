@@ -1,31 +1,32 @@
 import asyncio
 import pygame
-
-pygame.init()
-pygame.display.set_mode((320, 240))
-clock = pygame.time.Clock()
+import sys
 
 async def main():
-    count = 60
+    pygame.init()
+    screen = pygame.display.set_mode((800, 600))
+    clock = pygame.time.Clock()
+    
+    # Add a background color to make it visible
+    background_color = (64, 128, 255)  # Light blue
+    
     running = True
-
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                break
-
-        print(f"{count}: Hello from Pygame")
-        pygame.display.update()
-        await asyncio.sleep(0)
-
-        if not count:
-            running = False
-            break
         
-        count -= 1
+        # Fill with background color
+        screen.fill(background_color)
+        
+        # Add some text to show it's working
+        font = pygame.font.Font(None, 36)
+        text = font.render("Game is running!", True, (255, 255, 255))
+        text_rect = text.get_rect(center=(400, 300))
+        screen.blit(text, text_rect)
+        
+        pygame.display.flip()
+        await asyncio.sleep(0)
         clock.tick(60)
-    
-    pygame.quit()
 
 asyncio.run(main()) 

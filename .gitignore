@@ -1,3 +1,10 @@
-.venv/
-__pycache__/
+
 .DS_Store
+__pycache__/
+*.pyc
+.venv/
+pygame_input_demo/build/web-cache/
+*.apk
+
+pygame_input_demo/build/
+pygame_input_demo/build/
